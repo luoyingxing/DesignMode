@@ -3,6 +3,8 @@ package com.luo.pattern;
 import com.luo.pattern.abstractFactory.AbstractFactory;
 import com.luo.pattern.abstractFactory.Color;
 import com.luo.pattern.abstractFactory.FactoryProducer;
+import com.luo.pattern.builder.Meal;
+import com.luo.pattern.builder.MealBuilder;
 import com.luo.pattern.factory.Shape;
 import com.luo.pattern.factory.ShapeFactory;
 import com.luo.pattern.singleton.SingletonFour;
@@ -19,7 +21,9 @@ public class Main {
 
 //        abstractFactory();
 
-        singleton();
+//        singleton();
+
+        builder();
     }
 
 
@@ -113,5 +117,22 @@ public class Main {
         //如果有其他特殊的需求，可以考虑使用第 4 种双检锁方式。
         SingletonFour.getSingleton().print();
 
+    }
+
+    /**
+     * 建造者模式（点餐模式）
+     */
+    private static void builder() {
+        MealBuilder mealBuilder = new MealBuilder();
+
+        Meal vegMeal = mealBuilder.prepareVegMeal();
+        System.out.println("Veg Meal");
+        vegMeal.showItems();
+        System.out.println("Total Cost: " + vegMeal.getCost());
+
+        Meal nonVegMeal = mealBuilder.prepareNonVegMeal();
+        System.out.println("\n\nNon-Veg Meal");
+        nonVegMeal.showItems();
+        System.out.println("Total Cost: " + nonVegMeal.getCost());
     }
 }
