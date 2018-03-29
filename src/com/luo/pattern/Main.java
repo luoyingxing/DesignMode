@@ -7,6 +7,7 @@ import com.luo.pattern.builder.Meal;
 import com.luo.pattern.builder.MealBuilder;
 import com.luo.pattern.factory.Shape;
 import com.luo.pattern.factory.ShapeFactory;
+import com.luo.pattern.prototype.ShapeCache;
 import com.luo.pattern.singleton.SingletonFour;
 import com.luo.pattern.singleton.SingletonOne;
 import com.luo.pattern.singleton.SingletonThrees;
@@ -23,7 +24,9 @@ public class Main {
 
 //        singleton();
 
-        builder();
+//        builder();
+
+        prototype();
     }
 
 
@@ -134,5 +137,21 @@ public class Main {
         System.out.println("\n\nNon-Veg Meal");
         nonVegMeal.showItems();
         System.out.println("Total Cost: " + nonVegMeal.getCost());
+    }
+
+    /**
+     * 原型模式
+     */
+    private static void prototype() {
+        ShapeCache.loadCache();
+
+        com.luo.pattern.prototype.Shape clonedShape = ShapeCache.getShape("1");
+        System.out.println("Shape : " + clonedShape.getType());
+
+        com.luo.pattern.prototype.Shape clonedShape2 = ShapeCache.getShape("2");
+        System.out.println("Shape : " + clonedShape2.getType());
+
+        com.luo.pattern.prototype.Shape clonedShape3 = ShapeCache.getShape("3");
+        System.out.println("Shape : " + clonedShape3.getType());
     }
 }
