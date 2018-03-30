@@ -3,6 +3,7 @@ package com.luo.pattern;
 import com.luo.pattern.abstractFactory.AbstractFactory;
 import com.luo.pattern.abstractFactory.Color;
 import com.luo.pattern.abstractFactory.FactoryProducer;
+import com.luo.pattern.adapter.AudioPlayer;
 import com.luo.pattern.builder.Meal;
 import com.luo.pattern.builder.MealBuilder;
 import com.luo.pattern.factory.Shape;
@@ -26,7 +27,9 @@ public class Main {
 
 //        builder();
 
-        prototype();
+//        prototype();
+
+        adapter();
     }
 
 
@@ -153,5 +156,17 @@ public class Main {
 
         com.luo.pattern.prototype.Shape clonedShape3 = ShapeCache.getShape("3");
         System.out.println("Shape : " + clonedShape3.getType());
+    }
+
+    /**
+     * 适配器模式
+     */
+    private static void adapter() {
+        AudioPlayer audioPlayer = new AudioPlayer();
+
+        audioPlayer.play("mp3", "beyond the horizon.mp3");
+        audioPlayer.play("mp4", "alone.mp4");
+        audioPlayer.play("vlc", "far far away.vlc");
+        audioPlayer.play("avi", "mind me.avi");
     }
 }
